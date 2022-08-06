@@ -1,4 +1,9 @@
 package com.example.courseworkenv.service;
 
-public interface ExamenenService {
+import com.example.courseworkenv.Question;
+
+import java.util.Collection;
+
+public interface ExamenesService {
+    Collection<Question> getQuestions(int amount);
 }
