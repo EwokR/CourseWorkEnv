@@ -24,16 +24,11 @@ public class JavaQuestionService implements QuestionService {
         if (questionsSet.contains(new Question(question, answer))) {
             throw new QuestionAlreadyOnListException();
         }
-
-
         return add(new Question(question, answer));
     }
 
     @Override
     public Question add(Question question) {
-        if (questionsSet.contains(question)) {
-            throw new QuestionAlreadyOnListException();
-        }
         questionsSet.add(question);
         System.out.println("Question " + question + " is added.");
         return question;

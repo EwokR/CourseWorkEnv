@@ -36,9 +36,9 @@ public class ExamenesServiceImplTest {
         Question question5 = new Question("test question five", "test answer five");
         Collection<Question> questions = new HashSet<>(Set.of(question1, question2, question3, question4, question5));
         when(javaQuestionServiceMock.getAll()).thenReturn(questions);
-        when(javaQuestionServiceMock.getAll().size()).thenReturn(5);
+        when(javaQuestionServiceMock.getAll().size());
         when(javaQuestionServiceMock.getRandomQuestion()).thenReturn(question1, question2, question3, question4, question5);
         examenesServiceImpl.getQuestions(5);
-        verify(javaQuestionServiceMock,times(5)).getRandomQuestion();
+        assertThat(examenesServiceImpl.getQuestions(5)).isEqualTo(5);
     }
 }

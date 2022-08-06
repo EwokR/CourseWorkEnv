@@ -20,7 +20,7 @@ public class ExamController {
         this.examenesService = examenesService;
     }
 
-    @GetMapping("/exam/get/{amount}")
+    @GetMapping("/get/{amount}")
     public Collection<Question> getQuestions(@RequestParam ("amount") int amount) {
         return  examenesService.getQuestions(amount);
     }

@@ -12,18 +12,21 @@ import java.util.Set;
 @Service
 public class ExamenesServiceImpl implements ExamenesService {
 
-    QuestionService questionService;
-    JavaQuestionService javaQuestionService;
+    private final QuestionService questionService;
+
+    public ExamenesServiceImpl(QuestionService questionService) {
+        this.questionService = questionService;
+    }
 
     @Override
-   public Collection<Question> getQuestions(int amount) {
+    public Collection<Question> getQuestions(int amount) {
         Set<Question> questionSet = new HashSet<>();
-        if (amount < 0 || amount > javaQuestionService.getAll().size()) {
+        if (amount < 0 || amount > questionService.getAll().size()) {
             throw new BadRequestQuestionException();
         }
 
         while (questionSet.size() < amount) {
-            questionSet.add(javaQuestionService.getRandomQuestion());
+            questionSet.add(questionService.getRandomQuestion());
         }
         return questionSet;
     }

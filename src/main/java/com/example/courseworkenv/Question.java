@@ -11,7 +11,7 @@ public class Question {
 
     public Question(String question, String answer) {
         if (question.equals(answer)) {
-            throw new QuestionAlreadyOnListException();
+            throw new IllegalArgumentException();
         }
         this.question = question;
         this.answer = answer;
